@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+PromotiCon
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+          <style type="text/css">
+                 a:link { color: black; text-decoration: none;}
+                 a:visited { color: black; text-decoration: none;}
+                 a:hover { color: blue; text-decoration: underline;}
+             #player {width: 180px;}
+          </style>
+          <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no", user-scalable="yes">
+          <meta name="description" content="PromotiCon audio demo page">
+          <meta name="autor" content="PromotiCon">
+          <title>PromotiCon Demo</title>
+          
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
+          <link href="css/styles.css" rel="stylesheet">
+          <link rel="stylesheet" href="css/heading.css">
+          <link rel="stylesheet" href="css/body.css">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/11.0.2/css/bootstrap-slider.min.css" integrity="sha512-3q8fi8M0VS+X/3n64Ndpp6Bit7oXSiyCnzmlx6IDBLGlY5euFySyJ46RUlqIVs0DPCGOypqP8IRk/EyPvU28mQ==" crossorigin="anonymous" />
+      </head>
+
+    <body id="page-top">
+        <nav class="navbar navbar-expand-lg bg-secondary fixed-top" id="mainNav">
+            <div class="container"><a class="navbar-brand js-scroll-trigger" href="#page-top">PromotiCon</a>
+                <button class="navbar-toggler navbar-toggler-right font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">Menu <i class="fas fa-bars"></i></button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#esd">Prompt-based Emotion Control</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#zeroshot">Zero-shot</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <header class="masthead bg-white text-left"> 
+            <div class="container d-flex align-items-center flex-column">
+                <h1 class="masthead-heading mb-0">PromotiCon: Prompt-based Emotion Controllable Text-to-Speech via Prompt Generation and Matching</h1>
+		            <p class="pre-wrap lead">&nbsp;</p>
+                <img src="img/promoticon.png" alt="main" style="max-width: 100%; height: auto;"> 
+                <em>Overall framework of PromotiCon</em><p></p><br>
+            </div>
+        </header>
+
+        <section class="page-section alert-secondary portfolio" id="intro">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="page-section-heading text-secondary mb-0 d-inline-block">Abstract</h2>
+                </div>
+                <div class="divider-custom">
+                    <div class="divider-custom"></div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-lg-12 ml-auto">
+                        <p class="pre-wrap lead">&nbsp;</p>
+                        <p class="pre-wrap lead">  Text-to-speech (TTS) technologies have recently expanded to incorporate natural language prompts for user-friendly control of speech styles, driven by significant advancements in language models. Traditional prompt-based TTS research, however, typically requires large-scale prompt generation that often necessitates costly human annotations. To address this challenge, we propose PromotiCon, a model that leverages prompts generated without human annotations to control emotions in speech. Our model utilizes abundant prompts generated using a large language model.  Additionally, we propose an emotion distance-based prompt-speech matching method to appropriately pair the generated prompts with the most resembling speech data. To enhance speaker adaptation, we utilize a semi-supervised approach that allows the joint utilization of multi-speaker data without emotion labels. As a result, our model facilitates zero-shot emotional speech synthesis. Our experimental results confirm the effectiveness of our approach.</p>
+	                      <p class="pre-wrap lead">&nbsp;</p>
+	                    </div>
+                    </div>         
+                </div>
+            </div>
+        </section>
+        <style>
+          tr, td {
+            text-align:center;
+          }
+          tr {
+            font-size: 15pt;
+          }
+          td {
+            font-size: 13pt;
+          }
+        </style>
+        
+        <section class="page-section bg-info text-white mb-0" id="esd">	
+            <div class="container">
+              <div class="text-center">
+                <h2 class="page-section-heading d-inline-block text-white">Prompt-based Emotion Control</h2>
+                <p class="pre-wrap lead"> Emotion Speech Dataset (ESD) </p>
+              </div>
+  
+              <div class="divider-custom divider-light">
+              </div>
+                <div class="row">
+                  <div class="col-lg-12 ml-auto">
+                    <table class="table table-responsive align-content-center" style="background-color: rgba(255, 255, 255, 0.993); border-radius: 20px">
+                      <thead><tr>
+                        <th style="width: 22%"> Source Speaker </th>
+                        <th style="width: 28%"> Prompt</th>
+                        <th style="width: 22%"> Synthesized </th>
+                        <th style="width: 1%">  </th>
+                      </tr></thead>    
+                      
+                      <tbody>
+                        <tr>
+                          <td>
+                          <p><strong>0011 </strong></p>
+                            <audio id="player" controls><source src="audio/Real/GT/0011_000035.wav" type="audio/wav"></audio>
+                          </td>
+                          <td>
+                          <p><strong>His speech is flat, free from any emotional undulations. </strong></p>
+                          </td>
+                          <td>
+                          <p><strong>PromotiCon </strong></p>
+                            <audio id="player" controls><source src="audio/Emo/promoticon_0011_000023.wav" type="audio/wav"></audio>
+                          </td>
+                        </tr>
+                        <tr><td></td>
+                          <td>
+                          <p><strong>He responds with a rapid, high-pitched tone, full of anger. </strong></p>
+                          </td>
+                          <td>
+                          <p><strong>PromotiCon </strong></p>
+                            <audio id="player" controls><source src="audio/Emo/promoticon_0011_000395.wav" type="audio/wav"></audio>
+                          </td>
+                        </tr>
+                        <tr><td></td>
+                          <td>
+                          <p><strong>He's absolutely thrilled, his excitement contagious. </strong></p>
+                          </td>
+                          <td>
+                          <p><strong>PromotiCon </strong></p>
+                            <audio id="player" controls><source src="audio/Emo/promoticon_0011_000731.wav" type="audio/wav"></audio>
+                          </td>
+                        </tr>
+                        <tr><td></td>
+                          <td>
+                          <p><strong>He articulates with a subdued grief, a low, sorrowful tone. </strong></p>
+                          </td>
+                          <td>
+                          <p><strong>PromotiCon </strong></p>
+                            <audio id="player" controls><source src="audio/Emo/promoticon_0011_001092.wav" type="audio/wav"></audio>
+                          </td>
+                        </tr>
+                        <tr><td></td>
+                          <td>
+                          <p><strong>His speech has a spirited rhythm, lively and full of wonder. </strong></p>
+                          </td>
+                           
+                          <td>
+                          <p><strong>PromotiCon </strong></p>
+                            <audio id="player" controls><source src="audio/Emo/promoticon_0011_001433.wav" type="audio/wav"></audio>
+                          </td>
+                        </tr>
+                     </tbody>
+                    </table>
+                  </div>
+                </div>
+                
+              
+                <div class="row">
+                  <div class="col-lg-12 ml-auto">
+                    <table class="table table-responsive align-content-center" style="background-color: rgba(255, 255, 255, 0.993); border-radius: 20px">
+                      <thead><tr>
+                        <th style="width: 22%"> Source Speaker </th>
+                        <th style="width: 28%"> Prompt</th>
+                        <th style="width: 22%"> Synthesized </th>
+                        <th style="width: 1%">  </th>
+                      </tr></thead>   
+
+                      <tbody>
+                        <tr>
+                          <td>
+                          <p><strong>0016 </strong></p>
+                            <audio id="player" controls><source src="audio/Real/GT/0016_000022.wav" type="audio/wav"></audio>
+                          </td>
+                          <td>
+                          <p><strong>She maintains a steady, neutral voice. </strong></p>
+                          </td>
+                          <td>
+                          <p><strong>PromotiCon </strong></p>
+                            <audio id="player" controls><source src="audio/Emo/promoticon_0016_000032.wav" type="audio/wav"></audio>
+                          </td>
+                        </tr>
+                        <tr><td></td>
+                          <td>
+                          <p><strong>Her voice is gruff, each word heavier with annoyance. </strong></p>
+                          </td>
+                          <td>
+                          <p><strong>PromotiCon </strong></p>
+                            <audio id="player" controls><source src="audio/Emo/promoticon_0016_000381.wav" type="audio/wav"></audio>
+                          </td>
+                        </tr>
+                        <tr><td></td>
+                          <td>
+                          <p><strong>She sounds elated, her voice bright and lively. </strong></p>
+                          </td>
+                          <td>
+                          <p><strong>PromotiCon </strong></p>
+                            <audio id="player" controls><source src="audio/Emo/promoticon_0016_000745.wav" type="audio/wav"></audio>
+                          </td>
+                        </tr>
+                        <tr><td></td>
+                          <td>
+                          <p><strong>She speaks with a slow, deepening sadness. </strong></p>
+                          </td>
+                          <td>
+                          <p><strong>PromotiCon </strong></p>
+                            <audio id="player" controls><source src="audio/Emo/promoticon_0016_001080.wav" type="audio/wav"></audio>
+                          </td>
+                        </tr>
+                        <tr><td></td>
+                          <td>
+                          <p><strong>She speaks in a higher register, her voice reflecting her amazement. </strong></p>
+                          </td>
+                           
+                          <td>
+                          <p><strong>PromotiCon </strong></p>
+                            <audio id="player" controls><source src="audio/Emo/promoticon_0016_001425.wav" type="audio/wav"></audio>
+                          </td>
+                        </tr>
+                     </tbody>
+                    </table>
+                  </div>
+                </div>
+              
+            </div>
+        </section>
+
+        <section class="page-section bg-primary text-white mb-0" id="zeroshot">
+          <div class="container">
+            <div class="text-center">
+              <h2 class="page-section-heading d-inline-block">Zero-shot (Libri test-clean)</h2>
+              <p class="pre-wrap lead">All speakers are unseen during training</p>
+            </div>
+  
+              <div class="divider-custom divider-light">
+              </div>
+              <div class="row">
+                  <div class="col-lg-12 ml-auto" >
+                    <table class="table table-responsive align-content-center" style="background-color: rgba(255, 255, 255, 0.993); border-radius: 20px">
+                      <tr>
+                        <th style="width: 22%"> Source Speaker </th>
+                        <th style="width: 28%"> Prompt</th>
+                        <th style="width: 22%"> Synthesized </th>
+                        <th style="width: 1%">  </th>
+                      </tr>
+                      
+                      <tbody>
+                        <tr>
+                          <td>
+                          <p><strong>GT (8230) </strong></p>
+                            <audio id="player" controls><source src="audio/Real/GT/8230_279154_000024_000007.wav" type="audio/wav"></audio>
+                          </td>
+                          <td>
+                          <p><strong>He speaks in an even, calm tone. </strong></p>
+                          </td>
+                          <td>
+                          <p><strong>PromotiCon </strong></p>
+                            <audio id="player" controls><source src="audio/Zero/8230_279154_000019_000002.wav" type="audio/wav"></audio>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                          <p><strong>GT (5105) </strong></p>
+                            <audio id="player" controls><source src="audio/Real/GT/5105_28241_000003_000001.wav" type="audio/wav"></audio>
+                          </td>
+                          <td>
+                          <p><strong>He speaks with a tone of indignation, his annoyance evident. </strong></p>
+                          </td>
+                          <td>
+                          <p><strong>PromotiCon </strong></p>
+                            <audio id="player" controls><source src="audio/Zero/5105_28241_000025_000001.wav" type="audio/wav"></audio>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                          <p><strong>GT (5683) </strong></p>
+                            <audio id="player" controls><source src="audio/Real/GT/5683_32865_000044_000005.wav" type="audio/wav"></audio>
+                          </td>
+                          <td>
+                          <p><strong>Her voice her radiant, reflecting her inner joy. </strong></p>
+                          </td>
+                          <td>
+                          <p><strong>PromotiCon </strong></p>
+                            <audio id="player" controls><source src="audio/Zero/5683_32866_000045_000006.wav" type="audio/wav"></audio>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                          <p><strong>GT (237) </strong></p>
+                            <audio id="player" controls><source src="audio/Real/GT/237_126133_000059_000000.wav" type="audio/wav"></audio>
+                          </td>
+                          <td>
+                          <p><strong>She conveys her grief in a tone that's quietly sorrowful. </strong></p>
+                          </td>
+                          <td>
+                          <p><strong>PromotiCon </strong></p>
+                            <audio id="player" controls><source src="audio/Zero/237_134493_000005_000003.wav" type="audio/wav"></audio>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                          <p><strong>GT (3575) </strong></p>
+                            <audio id="player" controls><source src="audio/Real/GT/3575_170457_000016_000000.wav" type="audio/wav"></audio>
+                          </td>
+                          <td>
+                          <p><strong>She speaks with a quick, high tone, her surprise is clear and unmistakable. </strong></p>
+                          </td>
+                          <td>
+                          <p><strong>PromotiCon </strong></p>
+                            <audio id="player" controls><source src="audio/Zero/3575_170457_000046_000002.wav" type="audio/wav"></audio>
+                          </td>
+                        </tr>
+                     </tbody>
+
+                    </table>
+                  </div>
+                </div> 
+            </div>
+        </section>
+
+
+        <div class="scroll-to-top d-lg-none position-fixed"><a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top"><i class="fa fa-chevron-up"></i></a></div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+        
+        <!-- Third party plugin JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+        <script src="js/scripts.js"></script>
+        
+        <!-- Bootstrap slider JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/11.0.2/bootstrap-slider.min.js" integrity="sha512-f0VlzJbcEB6KiW8ZVtL+5HWPDyW1+nJEjguZ5IVnSQkvZbwBt2RfCBY0CBO1PsMAqxxrG4Di6TfsCPP3ZRwKpA==" crossorigin="anonymous"></script>
+
+        <!-- slider JS -->
+        <script type="text/javascript">
+        </script>
+    </body>
+</html>
+
+<style>
+
+  .noborder{
+          border: none!important;
+    }
+  .grid-image {
+      display:flex;
+      flex-wrap:wrap;
+      align-items:flex-start;
+      margin:30px 0;
+  }
+  .grid-image img {
+      width:calc(33.333% - 10px);
+      margin:0 15px 15px 0;
+  }
+  .grid-image img:nth-of-type(3n),
+  .grid-image img:last-child {
+      margin-right:0;
+  }
+  @media screen and (max-width:640px){
+    .grid-image img {
+      width:calc(50% - 15px);
+    }
+  }
+  @media screen and (max-width:480px){
+    .grid-image img:nth-of-type(2n) {
+      margin-right:0;
+    }
+    .grid-image img:nth-of-type(3n) {
+      margin-right:15px;
+    }
+  }
+  </style>
